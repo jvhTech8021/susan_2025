@@ -1,0 +1,539 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>2025 NCAA Tournament Predictions</title>
+        <style>
+    :root {
+        --primary-color: #17408B;    /* NCAA blue */
+        --secondary-color: #C9082A;  /* NCAA red */
+        --accent-color: #FF8200;     /* Basketball orange */
+        --light-color: #F8F9FA;
+        --dark-color: #343A40;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        background-color: var(--light-color);
+        color: var(--dark-color);
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    header {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: 2rem 1rem;
+        margin-bottom: 2rem;
+        border-radius: 0 0 10px 10px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+    }
+    
+    header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255, 255, 255, 0.2)" stroke-width="2" /><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="5" /><path d="M50,10 C73.5,10 92.5,29 92.5,52.5 C92.5,76 73.5,95 50,95 C26.5,95 7.5,76 7.5,52.5 C7.5,29 26.5,10 50,10 Z" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" /><path d="M10,50 L90,50 M50,10 L50,90" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" /></svg>');
+        background-repeat: repeat;
+        opacity: 0.3;
+        z-index: 0;
+    }
+    
+    header h1 {
+        position: relative;
+        z-index: 1;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    header p {
+        position: relative;
+        z-index: 1;
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    nav {
+        background-color: white;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 10px;
+        z-index: 1000;
+    }
+    
+    nav ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    nav a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+    }
+    
+    nav a:hover {
+        background-color: rgba(23, 64, 139, 0.1);
+    }
+    
+    main {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    section {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        margin-bottom: 2rem;
+    }
+    
+    section:target {
+        animation: highlight 2s ease;
+    }
+    
+    @keyframes highlight {
+        0% { background-color: rgba(255, 130, 0, 0.2); }
+        100% { background-color: white; }
+    }
+    
+    h2 {
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid rgba(23, 64, 139, 0.2);
+        position: relative;
+    }
+    
+    h2::after {
+        content: '🏀';
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    
+    h3 {
+        color: var(--secondary-color);
+        margin: 1.5rem 0 1rem;
+    }
+    
+    ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .team-card {
+        background: linear-gradient(to right, rgba(23, 64, 139, 0.05), transparent);
+        padding: 1rem;
+        border-radius: 6px;
+        margin-bottom: 1.5rem;
+        border-left: 4px solid var(--primary-color);
+    }
+    
+    .champion {
+        border: 2px solid var(--accent-color);
+        background: linear-gradient(to right, rgba(255, 130, 0, 0.1), transparent);
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+    
+    .champion h3 {
+        color: var(--accent-color);
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .data-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .stat-box {
+        background-color: rgba(23, 64, 139, 0.05);
+        padding: 1rem;
+        border-radius: 6px;
+    }
+    
+    .cinderella {
+        border-left: 4px solid green;
+        background: linear-gradient(to right, rgba(0, 128, 0, 0.05), transparent);
+    }
+    
+    .bust {
+        border-left: 4px solid var(--secondary-color);
+        background: linear-gradient(to right, rgba(201, 8, 42, 0.05), transparent);
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+        box-shadow: var(--shadow);
+    }
+    
+    .image-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+    
+    footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding: 2rem 0;
+        color: var(--dark-color);
+        opacity: 0.8;
+        font-size: 0.9rem;
+    }
+    
+    @media (min-width: 768px) {
+        .image-container {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    
+    /* Bracket styling */
+    .bracket {
+        display: flex;
+        justify-content: space-between;
+        margin: 2rem 0;
+        overflow-x: auto;
+    }
+    
+    .round {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 200px;
+    }
+    
+    .match {
+        height: 80px;
+        margin: 10px 0;
+        position: relative;
+    }
+    
+    .team {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-left: 4px solid var(--primary-color);
+        padding: 8px;
+        margin-bottom: 1px;
+        font-size: 14px;
+    }
+    
+    .team-seed {
+        font-weight: bold;
+        margin-right: 5px;
+        color: var(--primary-color);
+    }
+    
+    .champion-indicator {
+        display: inline-block;
+        margin-left: 5px;
+        color: var(--accent-color);
+        font-size: 1.2em;
+    }
+    
+    .tournament-summary {
+        background-color: rgba(23, 64, 139, 0.05);
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 2rem 0;
+    }
+    
+    .tournament-summary h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+    
+    .tournament-summary ul {
+        column-count: 2;
+        column-gap: 2rem;
+    }
+    
+    @media (max-width: 768px) {
+        .tournament-summary ul {
+            column-count: 1;
+        }
+    }
+    
+    /* Basketball loader */
+    .loader {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: 
+            radial-gradient(circle at 17px 17px, var(--accent-color) 5px, transparent 0),
+            radial-gradient(circle at 43px 17px, var(--accent-color) 5px, transparent 0),
+            radial-gradient(circle at 43px 43px, var(--accent-color) 5px, transparent 0),
+            radial-gradient(circle at 17px 43px, var(--accent-color) 5px, transparent 0),
+            repeating-conic-gradient(var(--accent-color) 0deg, var(--accent-color) 5deg, transparent 5deg, transparent 35deg);
+        animation: bounce 1s ease-in-out infinite alternate;
+        margin: 2rem auto;
+    }
+    
+    @keyframes bounce {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-20px); }
+    }
+    </style>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        
+    <header>
+        <h1>2025 NCAA Tournament Predictions</h1>
+        <p>Deep learning predictions based on KenPom data from 2009-2024</p>
+        <p>Generated on March 05, 2025</p>
+    </header>
+    
+        <nav><ul><li><a href="#predicted-champion">Predicted Champion</a></li><li><a href="#final-four-teams">Final Four Teams</a></li><li><a href="#duke">Duke</a></li><li><a href="#auburn">Auburn</a></li><li><a href="#houston">Houston</a></li><li><a href="#tennessee">Tennessee</a></li><li><a href="#elite-eight-teams">Elite Eight Teams</a></li><li><a href="#sweet-sixteen-teams">Sweet Sixteen Teams</a></li><li><a href="#tournament-qualifiers">Tournament Qualifiers</a></li><li><a href="#potential-cinderella-teams">Potential Cinderella Teams</a></li><li><a href="#historical-pattern-based-cinderella-teams">Historical Pattern-Based Cinderella Teams</a></li><li><a href="#potential-tournament-busts">Potential Tournament Busts</a></li><li><a href="#historical-pattern-based-bust-teams">Historical Pattern-Based Bust Teams</a></li><li><a href="#predicted-first-round-upsets">Predicted First Round Upsets</a></li><li><a href="#historical-tournament-performance-analysis">Historical Tournament Performance Analysis</a></li><li><a href="#notable-historical-cinderella-teams">Notable Historical Cinderella Teams</a></li><li><a href="#notable-historical-bust-teams">Notable Historical Bust Teams</a></li></ul></nav>
+        <main>
+            <section id="predictions">
+                <h1>2025 NCAA Tournament Predictions</h1>
+<p>These predictions are generated based on a deep learning model trained on KenPom data from 2009-2024.</p>
+<h2 id="predicted-champion">Predicted Champion</h2><div class="champion">
+<p><strong>Duke</strong> (25.3% championship probability)</p>
+<p>Duke is predicted to be a strong contender with an Adjusted Efficiency Margin of 39.3734 (Rank: 1). They have an elite offense (Rank: 2) that can score efficiently. Their defense is outstanding (Rank: 4), which should help them control games. The model predicts they have the right balance of offensive and defensive efficiency to win it all.</p>
+</div><h2 id="final-four-teams">Final Four Teams</h2><div class="data-grid">
+<div class="team-card"><h3>Duke</h3>
+<p>Offense-driven team (Offensive rank: 2, Defensive rank: 4)</p>
+</div><div class="team-card"><h3>Auburn</h3>
+<p>Offense-driven team (Offensive rank: 1, Defensive rank: 14)</p>
+</div><div class="team-card"><h3>Houston</h3>
+<p>Defense-first team (Defensive rank: 3, Offensive rank: 9)</p>
+</div><div class="team-card"><h3>Tennessee</h3>
+<p>Defense-first team (Defensive rank: 1, Offensive rank: 26)</p>
+</div></div><h2 id="elite-eight-teams">Elite Eight Teams</h2>
+<ul>
+<li><strong>St. John's</strong> - Defense-first team (Defensive rank: 2, Offensive rank: 72)</li>
+<li><strong>Alabama</strong> - Offense-driven team (Offensive rank: 3, Defensive rank: 35)</li>
+<li><strong>Gonzaga</strong> - Offense-driven team (Offensive rank: 7, Defensive rank: 36)</li>
+<li><strong>Florida</strong> - Offense-driven team (Offensive rank: 4, Defensive rank: 8)</li>
+</ul>
+<h2 id="sweet-sixteen-teams">Sweet Sixteen Teams</h2>
+<ul>
+<li><strong>Kentucky</strong> - Offense-driven team (Offensive rank: 6, Defensive rank: 58)</li>
+<li><strong>Purdue</strong> - Offense-driven team (Offensive rank: 8, Defensive rank: 51)</li>
+<li><strong>Missouri</strong> - Offense-driven team (Offensive rank: 5, Defensive rank: 59)</li>
+<li><strong>Illinois</strong> - Offense-driven team (Offensive rank: 14, Defensive rank: 32)</li>
+<li><strong>Arizona</strong> - Offense-driven team (Offensive rank: 15, Defensive rank: 27)</li>
+<li><strong>Wisconsin</strong> - Offense-driven team (Offensive rank: 11, Defensive rank: 30)</li>
+<li><strong>Iowa St.</strong> - Defense-first team (Defensive rank: 7, Offensive rank: 24)</li>
+<li><strong>Maryland</strong> - Defense-first team (Defensive rank: 11, Offensive rank: 29)</li>
+</ul>
+<h2 id="tournament-qualifiers">Tournament Qualifiers</h2>
+<p>Total teams predicted to make the tournament: 68</p>
+<h2 id="potential-cinderella-teams">Potential Cinderella Teams</h2><div class="cinderella-section">
+<p>No potential Cinderella teams identified in this prediction.</p>
+</div><h2 id="historical-pattern-based-cinderella-teams">Historical Pattern-Based Cinderella Teams</h2>
+<p>Teams that match statistical patterns of historical tournament overperformers:</p>
+<ul>
+<li><strong>New Mexico</strong> (AdjEM Rank: 40) - CinderellaScore: 0.96</li>
+<li>Similar to historical Cinderellas with AdjEM=17.4, AdjOE=113.3, AdjDE=96.0</li>
+<li>Current prediction: First Round (Round of 64)</li>
+<li><strong>Arkansas</strong> (AdjEM Rank: 39) - CinderellaScore: 0.93</li>
+<li>Similar to historical Cinderellas with AdjEM=17.8, AdjOE=112.1, AdjDE=94.3</li>
+<li>Current prediction: First Round (Round of 64)</li>
+<li><strong>Cincinnati</strong> (AdjEM Rank: 49) - CinderellaScore: 0.89</li>
+<li>Similar to historical Cinderellas with AdjEM=16.2, AdjOE=112.5, AdjDE=96.3</li>
+<li>Current prediction: First Round (Round of 64)</li>
+<li><strong>Xavier</strong> (AdjEM Rank: 45) - CinderellaScore: 0.86</li>
+<li>Similar to historical Cinderellas with AdjEM=16.6, AdjOE=114.7, AdjDE=98.0</li>
+<li>Current prediction: First Round (Round of 64)</li>
+<li><strong>UC San Diego</strong> (AdjEM Rank: 36) - CinderellaScore: 0.85</li>
+<li>Similar to historical Cinderellas with AdjEM=18.6, AdjOE=116.1, AdjDE=97.6</li>
+<li>Current prediction: Second Round (Round of 32)</li>
+<li><strong>Georgia</strong> (AdjEM Rank: 33) - CinderellaScore: 0.84</li>
+<li>Similar to historical Cinderellas with AdjEM=19.5, AdjOE=116.0, AdjDE=96.5</li>
+<li>Current prediction: Second Round (Round of 32)</li>
+<li><strong>Memphis</strong> (AdjEM Rank: 50) - CinderellaScore: 0.83</li>
+<li>Similar to historical Cinderellas with AdjEM=16.1, AdjOE=114.0, AdjDE=97.9</li>
+<li>Current prediction: First Round (Round of 64)</li>
+<li><strong>Indiana</strong> (AdjEM Rank: 46) - CinderellaScore: 0.83</li>
+<li>Similar to historical Cinderellas with AdjEM=16.5, AdjOE=115.0, AdjDE=98.5</li>
+<li>Current prediction: First Round (Round of 64)</li>
+<li><strong>Creighton</strong> (AdjEM Rank: 35) - CinderellaScore: 0.83</li>
+<li>Similar to historical Cinderellas with AdjEM=18.6, AdjOE=116.5, AdjDE=97.9</li>
+<li>Current prediction: First Round (Round of 64)</li>
+<li><strong>Northwestern</strong> (AdjEM Rank: 47) - CinderellaScore: 0.82</li>
+<li>Similar to historical Cinderellas with AdjEM=16.4, AdjOE=114.9, AdjDE=98.5</li>
+<li>Current prediction: First Round (Round of 64)</li>
+</ul>
+<h2 id="potential-tournament-busts">Potential Tournament Busts</h2><div class="bust-section">
+<ul>
+<li class="bust">Texas Tech (AdjEM Rank: 7) - Predicted to exit in the Second Round (Round of 32) (Disappointment Factor: 2.80)</li>
+<li class="bust">Michigan St. (AdjEM Rank: 9) - Predicted to exit in the Second Round (Round of 32) (Disappointment Factor: 2.40)</li>
+<li class="bust">Wisconsin (AdjEM Rank: 10) - Predicted to exit in the Sweet 16 (Disappointment Factor: 1.10)</li>
+<li class="bust">Iowa St. (AdjEM Rank: 11) - Predicted to exit in the Sweet 16 (Disappointment Factor: 1.00)</li>
+<li class="bust">Missouri (AdjEM Rank: 12) - Predicted to exit in the Sweet 16 (Disappointment Factor: 0.90)</li>
+<li class="bust">Purdue (AdjEM Rank: 13) - Predicted to exit in the Sweet 16 (Disappointment Factor: 0.80)</li>
+<li class="bust">Arizona (AdjEM Rank: 14) - Predicted to exit in the Sweet 16 (Disappointment Factor: 0.70)</li>
+<li class="bust">Kentucky (AdjEM Rank: 15) - Predicted to exit in the Sweet 16 (Disappointment Factor: 0.60)</li>
+<li class="bust">Maryland (AdjEM Rank: 16) - Predicted to exit in the Sweet 16 (Disappointment Factor: 0.50)</li>
+<li class="bust">Clemson (AdjEM Rank: 18) - Predicted to exit in the Second Round (Round of 32) (Disappointment Factor: 0.60)</li>
+<li class="bust">Illinois (AdjEM Rank: 19) - Predicted to exit in the Sweet 16 (Disappointment Factor: 0.20)</li>
+<li class="bust">Texas A&amp;M (AdjEM Rank: 20) - Predicted to exit in the Second Round (Round of 32) (Disappointment Factor: 0.20)</li>
+</ul>
+</div><h2 id="historical-pattern-based-bust-teams">Historical Pattern-Based Bust Teams</h2>
+<p>Teams that match statistical patterns of historical tournament underperformers:</p>
+<ul>
+<li><strong>Michigan St.</strong> (AdjEM Rank: 9) - BustScore: 0.95</li>
+<li>Similar to historical busts with AdjEM=27.0, AdjOE=118.0, AdjDE=91.0</li>
+<li>Current prediction: Second Round (Round of 32)</li>
+<li><strong>Iowa St.</strong> (AdjEM Rank: 11) - BustScore: 0.88</li>
+<li>Similar to historical busts with AdjEM=25.9, AdjOE=118.6, AdjDE=92.7</li>
+<li>Current prediction: Sweet 16</li>
+<li><strong>Tennessee</strong> (AdjEM Rank: 5) - BustScore: 0.79</li>
+<li>Similar to historical busts with AdjEM=31.4, AdjOE=118.5, AdjDE=87.0</li>
+<li>Current prediction: Final Four</li>
+<li><strong>Maryland</strong> (AdjEM Rank: 16) - BustScore: 0.74</li>
+<li>Similar to historical busts with AdjEM=24.8, AdjOE=118.2, AdjDE=93.4</li>
+<li>Current prediction: Sweet 16</li>
+<li><strong>Texas Tech</strong> (AdjEM Rank: 7) - BustScore: 0.69</li>
+<li>Similar to historical busts with AdjEM=27.6, AdjOE=124.1, AdjDE=96.5</li>
+<li>Current prediction: Second Round (Round of 32)</li>
+<li><strong>Gonzaga</strong> (AdjEM Rank: 8) - BustScore: 0.66</li>
+<li>Similar to historical busts with AdjEM=27.3, AdjOE=125.0, AdjDE=97.8</li>
+<li>Current prediction: Elite 8</li>
+<li><strong>Wisconsin</strong> (AdjEM Rank: 10) - BustScore: 0.66</li>
+<li>Similar to historical busts with AdjEM=26.8, AdjOE=123.8, AdjDE=97.0</li>
+<li>Current prediction: Sweet 16</li>
+<li><strong>Houston</strong> (AdjEM Rank: 3) - BustScore: 0.65</li>
+<li>Similar to historical busts with AdjEM=35.1, AdjOE=124.2, AdjDE=89.1</li>
+<li>Current prediction: Final Four</li>
+<li><strong>Texas A&amp;M</strong> (AdjEM Rank: 20) - BustScore: 0.65</li>
+<li>Similar to historical busts with AdjEM=24.1, AdjOE=117.0, AdjDE=92.9</li>
+<li>Current prediction: Second Round (Round of 32)</li>
+<li><strong>Florida</strong> (AdjEM Rank: 4) - BustScore: 0.65</li>
+<li>Similar to historical busts with AdjEM=34.0, AdjOE=126.7, AdjDE=92.7</li>
+<li>Current prediction: Elite 8</li>
+</ul>
+<h2 id="predicted-first-round-upsets">Predicted First Round Upsets</h2>
+<p>No first round upsets predicted.</p>
+<h2 id="historical-tournament-performance-analysis">Historical Tournament Performance Analysis</h2>
+<h3>Notable Historical Cinderella Teams</h3>
+<ul>
+<li>VCU (2011) - Expected to exit in First Round (Round of 64), reached Final Four</li>
+<li>Saint Peter's (2022) - Expected to exit in First Round (Round of 64), reached Elite 8</li>
+<li>Connecticut (2014) - Expected to exit in Elite 8, reached Champion</li>
+<li>Butler (2011) - Expected to exit in Sweet 16, reached Championship Game</li>
+<li>Loyola Chicago (2018) - Expected to exit in Sweet 16, reached Final Four</li>
+<li>North Carolina (2022) - Expected to exit in Elite 8, reached Championship Game</li>
+<li>Miami FL (2022) - Expected to exit in Second Round (Round of 32), reached Elite 8</li>
+<li>Kansas (2022) - Expected to exit in Final Four, reached Champion</li>
+<li>UCLA (2021) - Expected to exit in Sweet 16, reached Final Four</li>
+<li>Oral Roberts (2021) - Expected to exit in First Round (Round of 64), reached Sweet 16</li>
+</ul>
+<h3>Notable Historical Bust Teams</h3>
+<ul>
+<li>Duke (2011) - Expected to reach Championship Game, exited in Sweet 16</li>
+<li>Virginia (2014) - Expected to reach Championship Game, exited in Sweet 16</li>
+<li>Indiana (2013) - Expected to reach Championship Game, exited in Sweet 16</li>
+<li>Arizona (2022) - Expected to reach Championship Game, exited in Sweet 16</li>
+<li>Gonzaga (2022) - Expected to reach Championship Game, exited in Sweet 16</li>
+<li>Syracuse (2010) - Expected to reach Championship Game, exited in Sweet 16</li>
+<li>Louisville (2014) - Expected to reach Championship Game, exited in Sweet 16</li>
+<li>Memphis (2009) - Expected to reach Championship Game, exited in Sweet 16</li>
+<li>Houston (2024) - Expected to reach Championship Game, exited in Sweet 16</li>
+<li>Purdue (2018) - Expected to reach Final Four, exited in Sweet 16</li>
+</ul>
+            </section>
+            <section id="vis">
+                
+    <h2 id="visualizations">Tournament Visualizations</h2>
+    <div class="image-container">
+        <div>
+            <h3>Top Teams by Efficiency</h3>
+            <img src="top_teams_efficiency.png" alt="Top teams by offensive vs defensive efficiency">
+        </div>
+        <div>
+            <h3>Surprises and Busts</h3>
+            <img src="surprises_and_busts.png" alt="Potential tournament surprises and busts">
+        </div>
+    </div>
+    <div class="image-container">
+        <div>
+            <h3>Historical Performance Patterns</h3>
+            <img src="historical_performance_patterns.png" alt="Historical tournament performance patterns">
+        </div>
+    </div>
+    
+            </section>
+        </main>
+        
+    <footer>
+        <p>Predictions generated using a deep learning model trained on KenPom data</p>
+        <p>© 2025 NCAA Tournament Predictor</p>
+    </footer>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Make sticky nav work better
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08)';
+            } else {
+                nav.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    });
+    </script>
+    
+    </body>
+    </html>
+    
